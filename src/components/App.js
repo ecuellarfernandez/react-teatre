@@ -1,8 +1,12 @@
-import TheatreLines from './TheatreLines'
+import { GlobalStyle } from './globalStyles';
+import TheatreLines from './Theatre/TheatreLines'
 
 export default () => {
 
     return (
-        <TheatreLines />
+        <div>
+            <GlobalStyle />
+            <TheatreLines />
+        </div>
     );
 };
