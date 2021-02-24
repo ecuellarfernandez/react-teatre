@@ -1,8 +1,8 @@
+import TheatreLines from './TheatreLines'
+
 export default () => {
 
     return (
-        <div>
-            hello World!
-        </div>
+        <TheatreLines />
     );
 };
