@@ -1,6 +1,9 @@
 # react-teatre
 Sprint 7. React teatre
-DEMO: 
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d2c1c0cc-99d7-4bc9-bc99-274c6c4cb28e/deploy-status)](https://app.netlify.com/sites/react-teatre/deploys)  
+
+DEMO: https://react-teatre.netlify.app/
 
 ## Nivel 1 ⭐
 ## Ejercicio 1 ✅
