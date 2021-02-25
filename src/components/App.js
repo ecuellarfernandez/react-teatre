@@ -1,12 +1,12 @@
 import { GlobalStyle } from './globalStyles';
-import TheatreLines from './Theatre/TheatreLines'
+import Theatre from './Theatre/Theatre'
 
 export default () => {
 
     return (
         <div>
             <GlobalStyle />
-            <TheatreLines />
+            <Theatre />
         </div>
     );
 };

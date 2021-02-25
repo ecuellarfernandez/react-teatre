@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-// import linesJSON from '../../lines.json'
 import { Container, Button } from '../globalStyles'
-import { Paragraph, TheatreControls } from './Theatre-style'
+import { TheatreCard ,Paragraph, TheatreControls } from './Theatre-style'
 
 function useData(){
     const [data, setData] = useState([])
@@ -19,11 +18,42 @@ function useData(){
     return data
 }
 
-function TheatreLines(){
+function Controls({ handlePrev, handleNext }){
+    return(
+
+        <TheatreControls>
+            <Button onClick={handlePrev}>&#8593;</Button>
+            <Button onClick={handleNext}>&#8595;</Button>
+        </TheatreControls>
+
+    )
+}
+
+function Lines({ dataLines, currentLine }){
+    return (
+        <div>
+
+           {dataLines.map
+           ((item)=>
+           <Paragraph
+           key={item}
+           active={ currentLine === item }
+           > { item } </Paragraph>)}
+
+        </div>
+    )
+}
+
+
+function Theatre(){
     const data = useData();
 
     const [count, setCount] = useState(0);
-    const [line, setLine] = useState(data[count]);
+    const [line, setLine] = useState([]);
+
+    useEffect(()=>{
+        setLine( data[count] )
+    })
 
     const nextClick =()=>{
 
@@ -65,22 +95,30 @@ function TheatreLines(){
     }
 
     return (
+
+        <div>
+
+        <TheatreCard>
+
+            <Lines
+                dataLines={data}
+                currentLine={line}
+            />
+
+            <Controls
+                handlePrev={ prevClick }
+                handleNext={ nextClick }
+            />
+
+        </TheatreCard>
+
         <Container>
-
-            <TheatreControls>
-                <Button onClick={prevClick}>Previous</Button>
-                <Button onClick={nextClick}>Next</Button>
-            </TheatreControls>
-            
-            {
-
-            data.map((item, index)=><Paragraph key={item} active={ index === count }>{item}</Paragraph>)
-            
-            }
-
+            <hr/>
+            <Paragraph>Line: {line}</Paragraph> 
         </Container>
-        
+
+        </div>
     )
 }
 
-export default TheatreLines
+export default Theatre
