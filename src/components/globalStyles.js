@@ -10,6 +10,7 @@ export const Button = styled.button`
     height: 3.125rem;
     border:none;
     cursor:pointer;
+    background-color:lightgray;
 `
 
 export const GlobalStyle = createGlobalStyle`
