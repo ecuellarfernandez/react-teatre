@@ -1,22 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Button } from '../globalStyles'
 import { TheatreCard ,Paragraph, TheatreControls } from './Theatre-style'
-
-function useData(){
-    const [data, setData] = useState([])
-
-    useEffect(()=>{
-        fetch('../../../public/lines.json')
-        .then(response=>response.json())
-        .then(datos=> {
-            setData(datos)
-        })
-        .catch(error=>error.message)
-
-    }, [])
-    
-    return data
-}
+import { fetchDataHelper } from '../../utils/fetchData';
 
 function Controls({ handlePrev, handleNext }){
     return(
@@ -46,14 +31,18 @@ function Lines({ dataLines, currentLine }){
 
 
 function Theatre(){
-    const data = useData();
 
     const [count, setCount] = useState(0);
     const [line, setLine] = useState([]);
+    const [data, setData] = useState([]);
 
     useEffect(()=>{
-        setLine( data[count] )
-    })
+        fetchDataHelper('../../../public/lines.json')
+        .then(response=>{
+            setData( response )
+            setLine( data[count] )
+        })
+    }, [line])
 
     const nextClick =()=>{
 
@@ -84,7 +73,7 @@ function Theatre(){
             setLine( data[prevState - 1] )
             return prevState - 1
 
-        }) : 
+        }) :
 
         setCount(_=>{
 
