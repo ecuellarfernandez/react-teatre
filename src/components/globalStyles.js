@@ -5,7 +5,7 @@ export const Container = styled.div`
     width: min(90%, 62.5rem);
 `
 
-export const Button = styled.button`
+export const ButtonArrow = styled.button`
     width: 100%;
     height: 3.125rem;
     border:none;
