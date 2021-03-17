@@ -1,18 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Container, Button } from '../globalStyles'
 import { TheatreCard ,Paragraph, TheatreControls } from './Theatre-style'
 import { fetchDataHelper } from '../../utils/fetchData';
-
-function Controls({ handlePrev, handleNext }){
-    return(
-
-        <TheatreControls>
-            <Button onClick={handlePrev}>&#8593;</Button>
-            <Button onClick={handleNext}>&#8595;</Button>
-        </TheatreControls>
-
-    )
-}
 
 function Lines({ dataLines, currentLine }){
     return (
@@ -85,7 +74,7 @@ function Theatre(){
 
     return (
 
-        <div>
+        <Fragment>
 
         <TheatreCard>
 
@@ -94,10 +83,10 @@ function Theatre(){
                 currentLine={line}
             />
 
-            <Controls
-                handlePrev={ prevClick }
-                handleNext={ nextClick }
-            />
+            <TheatreControls>
+                <Button onClick={prevClick}>&#8593;</Button>
+                <Button onClick={nextClick}>&#8595;</Button>
+            </TheatreControls>
 
         </TheatreCard>
 
@@ -106,7 +95,7 @@ function Theatre(){
             <Paragraph>Line: {line}</Paragraph> 
         </Container>
 
-        </div>
+        </Fragment>
     )
 }
 
