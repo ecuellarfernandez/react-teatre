@@ -13,9 +13,9 @@ export default () => {
         fetchDataHelper('../../../public/lines.json')
         .then(response=>{
             setData( response )
-            setLine( data[count] )
+            setLine( response[count] )
         })
-    }, [line])
+    }, [])
 
     const handleNextClick =()=>{
 
